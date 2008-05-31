@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/rr
+lib/rr.rb
+test/test_rr.rb

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.txt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.txt</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.txt
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sat May 31 16:08:18 -0400 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>rr</h1>
+<ul>
+<li><a href="http://blog.bogojoker.com">blog.bogojoker.com</a>
+
+</li>
+</ul>
+<h2>DESCRIPTION:</h2>
+<p>
+A multi-line search and replace utility that uses Ruby regular expressions
+for searching and allows back references to captured groups from the
+pattern to appear in the replacement text.
+</p>
+<h2>FEATURES/PROBLEMS:</h2>
+<p>
+&lt;pre&gt;usage: rr [options] find replace [filenames]
+</p>
+<pre>
+       rr [options] s/find/replace/ [filenames]
+  find      - a regular expression to be run on the entire file as one string
+  replace   - replacement text, \1-\9 and metachars (\n, etc.) are allowed
+  filenames - names of the input files to be parsed, if blank uses STDIN
+</pre>
+<p>
+options:
+</p>
+<pre>
+  --line or -l    process line by line instead of all at once (not default)
+  --case or -c    makes the regular expression case sensitive (not default)
+  --global or -g  process all occurrences in the text (default)
+  --modify or -m  changes will directly modify the original file (not default)
+</pre>
+<p>
+negated options are done by adding &#8216;not&#8217; or &#8216;n&#8217; in
+switches like so:
+</p>
+<pre>
+  --notline or -nl
+</pre>
+<p>
+special note:
+</p>
+<pre>
+  When using bash, if you want backslashes in the replace portion make sure
+  to use the multiple argument usage with single quotes for the replacement.
+</pre>
+<p>
+&lt;/pre&gt;
+</p>
+<h2>SYNOPSIS:</h2>
+<p>
+Replace all a&#8216;s with e&#8216;s rr s/a/e/ file rr a e file
+</p>
+<p>
+Doubles the last character on each line and doubles the newline. rr
+&quot;(.)\n&quot; &quot;\1\1\n\n&quot; file
+</p>
+<h2>REQUIREMENTS:</h2>
+<ul>
+<li>Ruby 1.8.6 or greater
+
+</li>
+</ul>
+<h2>INSTALL:</h2>
+<ul>
+<li>sudo gem install rr
+
+</li>
+</ul>
+<h2>LICENSE:</h2>
+<p>
+(The MIT License)
+</p>
+<p>
+Copyright (c) 2008 Joseph Pecoraro
+</p>
+<p>
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+&#8216;Software&#8217;), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+</p>
+<p>
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</p>
+<p>
+THE SOFTWARE IS PROVIDED &#8216;AS IS&#8217;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
