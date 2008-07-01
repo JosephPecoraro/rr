@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Start Date: Sunday December 2, 2007 (v0.9)
-# Most Recent Update: Saturday January 26, 2008
-# Current Version: 1.0
+# Most Recent Update: Sunday June 29, 2008 (v1.1)
+# Current Version: 1.1
 # Author: Joseph Pecoraro
 # Contact: joepeck02@gmail.com
 # Decription: Default behavior is a multi-line search and replace utility that
@@ -19,7 +19,10 @@ $program_name = $0.split(/\//).last
 usage = <<USAGE
 usage: #{$program_name} [options] find replace [filenames]
        #{$program_name} [options] s/find/replace/ [filenames]
+       #{$program_name} [options] find
+
   find      - a regular expression to be run on the entire file as one string
+              the final usage defaults the replacement to the empty string
   replace   - replacement text, \\1-\\9 and metachars (\\n, etc.) are allowed
   filenames - names of the input files to be parsed, if blank uses STDIN
   
@@ -79,14 +82,18 @@ if ARGV.first =~ /^s\/(.*)?\/(.*)?\/(\w*)?$/
   find_str = $1
   replace = $2
   first_filename = 1
-  ARGV << nil if ARGV.size == 1
+  
+# Check for 3rd usage: rr [options] find
+elsif ARGV.size == 1
+  find_str = ARGV[0]
+  replace = ''
+  first_filename = 1
   
 # Not Quick Mode, Arguments are seperate on the cmdline
 elsif ARGV.size >= 2
   find_str = ARGV[0]
   replace = ARGV[1].dup
   first_filename = 2
-  ARGV << nil if ARGV.size == 2
   
   # User is allowed to wrap the find regex in /'s (this removes them)
   find_str = find_str[1..(find_str.length-2)] if find_str =~ /^\/.*?\/$/
@@ -96,6 +103,9 @@ else
   puts usage
   exit 1
 end
+
+# If there are no "files" put a nil on the end of ARGV to mean STDIN
+ARGV << nil if ARGV.size == first_filename
 
 # Make find_str into a Regexp object
 if case_sensitive

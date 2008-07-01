@@ -1,3 +1,13 @@
+=== 1.0.1 / 2008-06-29
+
+* 1 minor enhancement
+
+  * I found that usage quite often has the empty string in the replace portion
+    so I added a special usage (for pipes) that defaults the replacement
+    to the empty string.  Therefore if you're using TextMate or something, you
+    can filter the docment on a regex, stripping out whatever matches.
+
+
 === 1.0.0 / 2008-05-31
 
 * 1 major enhancement

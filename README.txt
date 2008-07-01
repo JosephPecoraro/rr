@@ -12,7 +12,9 @@ to appear in the replacement text.
 
 <pre>usage: rr [options] find replace [filenames]
        rr [options] s/find/replace/ [filenames]
+       rr [options] find
   find      - a regular expression to be run on the entire file as one string
+              the final usage defaults the replacement to the empty string
   replace   - replacement text, \1-\9 and metachars (\n, etc.) are allowed
   filenames - names of the input files to be parsed, if blank uses STDIN
   
@@ -45,7 +47,7 @@ rr "(.)\n" "\1\1\n\n" file
 
 == INSTALL:
 
-* sudo gem install rr
+* sudo gem install regex_replace
 
 == LICENSE:
 
