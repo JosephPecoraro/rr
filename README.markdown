@@ -57,7 +57,14 @@ Requirements:
 Install:
 --------
 
-* sudo gem install regex_replace
+From RubyForge:
+
+    sudo gem install regex_replace
+
+or from GitHub:
+
+    gem sources -a http://gems.github.com
+    sudo gem install JosephPecoraro-rr
 
 License:
 --------
