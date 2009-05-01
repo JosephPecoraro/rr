@@ -1,7 +1,4 @@
 #!/usr/bin/env ruby
-# Start Date: Sunday December 2, 2007 (v0.9)
-# Most Recent Update: Sunday June 29, 2008 (v1.1)
-# Current Version: 1.1
 # Author: Joseph Pecoraro
 # Contact: joepeck02@gmail.com
 # Decription: Default behavior is a multi-line search and replace utility that
