@@ -13,6 +13,7 @@ to appear in the replacement text.
   usage: rr [options] find replace [filenames]
          rr [options] s/find/replace/ [filenames]
          rr [options] find
+  
     find      - a regular expression to be run on the entire file as one string
                 the final usage defaults the replacement to the empty string
     replace   - replacement text, \1-\9 and metachars (\n, etc.) are allowed
@@ -23,6 +24,7 @@ to appear in the replacement text.
     --case or -c    makes the regular expression case sensitive (not default)
     --global or -g  process all occurrences in the text (default)
     --modify or -m  changes will directly modify the original file (not default)
+    --only or -o    print out only what matches the regex
   
   negated options are done by adding 'not' or 'n' in switches like so:
     --notline or -nl
@@ -30,6 +32,14 @@ to appear in the replacement text.
   special note:
     When using bash, if you want backslashes in the replace portion make sure
     to use the multiple argument usage with single quotes for the replacement.
+  
+  example usage:
+    Replace all a's with e's
+    rr s/a/e/ file
+    rr a e file
+  
+    Doubles the last character on each line and doubles the newline.
+    rr "(.)\n" "\1\1\n\n" file
 
 
 == SYNOPSIS:

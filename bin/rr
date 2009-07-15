@@ -10,6 +10,7 @@ line_processing = false
 case_sensitive = false
 global_replace = true
 modify_original = false
+only_match = false
 
 # Usage Message to print
 $program_name = $0.split(/\//).last
@@ -28,6 +29,7 @@ options:
   --case or -c    makes the regular expression case sensitive (not default)
   --global or -g  process all occurrences in the text (default)
   --modify or -m  changes will directly modify the original file (not default)
+  --only or -o    print out only what matches the regex
 
 negated options are done by adding 'not' or 'n' in switches like so:
   --notline or -nl
@@ -52,6 +54,11 @@ def err(msg)
   exit 1
 end
 
+# Print out only the matching portion
+def only(file)
+  
+end
+
 # Possible Switches
 ARGV.each_index do |i|
   arg = ARGV[i]
@@ -65,6 +72,8 @@ ARGV.each_index do |i|
       when "--notglobal", "-ng" then global_replace = false
       when "--modify"   , "-m"  then modify_original = true
       when "--notmodify", "-nm" then modify_original = false
+      when "--only"     , "-o"  then only_match = true
+      when "--notonly"  , "-no" then only_match = false
       else err("illegal option #{arg}")
     end
   end
@@ -158,9 +167,13 @@ first_filename.upto(ARGV.size-1) do |i|
   # 2. Read text as 1 big sting (memory intensive) or Line by Line
   # 3. Run the Find/Replace globally or non-globally
   # 4. Print the result to a stream
-  if line_processing and global_replace then
+  if only_match && replace == ''
+    stream.puts File.new(filename).read.scan(find).join("\n")
+  elsif only_match
+    File.new(filename).read.scan(find) { stream.puts $&.gsub(find,replace) }
+  elsif line_processing and global_replace
     File.new(filename).readlines.each { |line| stream.puts line.gsub(find,replace) }
-  elsif line_processing and !global_replace then
+  elsif line_processing and !global_replace
     File.new(filename).readlines.each { |line| stream.puts line.sub(find,replace) }
   elsif !line_processing and global_replace
     stream.puts File.new(filename).read.gsub(find,replace)
